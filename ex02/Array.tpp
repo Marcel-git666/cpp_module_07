@@ -18,7 +18,7 @@ template <typename T> Array<T> &Array<T>::operator=(Array const &other) {
         delete[] data;
         length = other.length;
         if (length > 0) {
-            data = new T[length]();
+            data = new T[length];
             for (unsigned int i = 0; i < length; i++) {
                 data[i] = other.data[i];
             }
@@ -29,11 +29,7 @@ template <typename T> Array<T> &Array<T>::operator=(Array const &other) {
     return *this;
 }
 
-template <typename T> Array<T>::~Array(void) {
-    if (data) {
-        delete[] data;
-    }
-}
+template <typename T> Array<T>::~Array(void) { delete[] data; }
 
 // Other methods
 template <typename T> Array<T>::Array(unsigned int n) : data(NULL), length(n) {
